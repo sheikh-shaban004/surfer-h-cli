@@ -6,42 +6,42 @@
 [🏄 Surfer-H product](https://www.surferh.com/) |
 [☁️ AWS Model Deployment](https://aws.amazon.com/marketplace/seller-profile?id=seller-sjve6dep3p3xc)
 
-Holo-1 is H Company’s Action Vision-Language Model (VLM) and Surfer-H is the agent that enacts it in the real world. Together, they provide a powerful, automated, yet optimized solution to interacting with web interfaces the way we do—setting a goal, taking decisions, re-thinking and re-assessing where needed, and, ultimately, fulfilling everyday tasks. Holo-1 and Surfer-H have been designed and built to do everything from booking flights, to searching for recipes online, and more.
+Holo1 is H Company’s Action Vision-Language Model (VLM) and Surfer-H is the agent that enacts it in the real world. Together, they provide a powerful, automated, yet optimized solution to interacting with web interfaces the way we do—setting a goal, taking decisions, re-thinking and re-assessing where needed, and, ultimately, fulfilling everyday tasks. Holo1 and Surfer-H have been designed and built to do everything from booking flights, to searching for recipes online, and more.
 
 
 
-# Holo-1
+# Holo1
 
-[Holo-1](https://huggingface.co/collections/Hcompany/holo1-683dd1eece7eb077b96d0cbd) is an Action Vision-Language Model (VLM) developed by [**H Company**](https://www.hcompany.ai/) for use in Surfer-H. It enables the agent to understand and act in digital environments. Holo-1 is built based on 3 core components that shape and determine its behaviour: policy, localizer, and validator. These are defined below:
+[Holo1](https://huggingface.co/collections/Hcompany/holo1-683dd1eece7eb077b96d0cbd) is an Action Vision-Language Model (VLM) developed by [**H Company**](https://www.hcompany.ai/) for use in Surfer-H. It enables the agent to understand and act in digital environments. Holo1 is built based on 3 core components that shape and determine its behaviour: policy, localizer, and validator. These are defined below:
 
 - **Policy**: Determines what action should be taken.
 - **Localizer**: Locates elements on the screen—like buttons, text fields, or key UI attributes.
 - **Validator**: Decides whether it succeeded or failed in doing what it set out to do.
 
-Trained on a combination of open-access, synthetic, and self-generated data, Holo-1 enables state-of-the-art (SOTA) performance on the WebVoyager benchmark, offering the best accuracy/cost tradeoff among current models. It also excels in UI localization tasks such as Screenspot, Screenspot-V2, Screenspot-Pro, GroundUI-Web, and our own newly introduced benchmark, WebClick. Holo-1 is optimized for both accuracy and cost-efficiency, making it a strong open-source alternative to existing VLMs. Currently, there are two Holo-1 models:
+Trained on a combination of open-access, synthetic, and self-generated data, Holo1 enables state-of-the-art (SOTA) performance on the WebVoyager benchmark, offering the best accuracy/cost tradeoff among current models. It also excels in UI localization tasks such as Screenspot, Screenspot-V2, Screenspot-Pro, GroundUI-Web, and our own newly introduced benchmark, WebClick. Holo1 is optimized for both accuracy and cost-efficiency, making it a strong open-source alternative to existing VLMs. Currently, there are two Holo1 models:
 
 | Model                                                 | Size         | Tensor type | General purpose                                        | Use case         |
 | ----------------------------------------------------- | ------------ | ----------- | ------------------------------------------------------ | ---------------- |
-| [Holo-1 3B](https://huggingface.co/Hcompany/Holo1-3B) | 3.75B params | BF16        | Optimized for efficiency, running locally, and hardware | Common tasks     |
-| [Holo-1 7B](https://huggingface.co/Hcompany/Holo1-7B) | 8.29B params | BF16        | Higher accuracy and for large scale inference          | Full-scale tasks |
+| [Holo1 3B](https://huggingface.co/Hcompany/Holo1-3B) | 3.75B params | BF16        | Optimized for efficiency, running locally, and hardware | Common tasks     |
+| [Holo1 7B](https://huggingface.co/Hcompany/Holo1-7B) | 8.29B params | BF16        | Higher accuracy and for large scale inference          | Full-scale tasks |
 
 # Surfer-H
 
-The Surfer-H agent brings Holo-1's vision to life. Surfer-H is capable of taking action and interacting with the world. It can see what’s on the screen, take decisions, interact with a UI by clicking buttons and scrolling, or navigating from page to page to fulfill everyday tasks like booking flights or shopping online. It’s also capable of recognizing when it has completed its task — or when it needs to pause, reassess, and try again. We’ve open-sourced Surfer‑H to share its capabilities and power with the world.
+The Surfer-H agent brings Holo1's vision to life. Surfer-H is capable of taking action and interacting with the world. It can see what’s on the screen, take decisions, interact with a UI by clicking buttons and scrolling, or navigating from page to page to fulfill everyday tasks like booking flights or shopping online. It’s also capable of recognizing when it has completed its task — or when it needs to pause, reassess, and try again. We’ve open-sourced Surfer‑H to share its capabilities and power with the world.
 
 # Get started
 
-This guide shows you how to deploy Holo-1 (3b and 7b). You must first deploy the Holo-1 model before launching the Surfer-H agent.
+This guide shows you how to deploy Holo1 (3b and 7b). You must first deploy the Holo1 model before launching the Surfer-H agent.
 
 ## Methods
 
-There are different methods and contexts in which to deploy Holo-1, including:
+There are different methods and contexts in which to deploy Holo1, including:
 
 | Method                                                                                             | Pre-requisites                                | Notes                                                                                      |
 | -------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| [Local vllm setup](src/surfer_h_cli/holo1/README.md)             | Install vllm / Machine with GPU           | Uses the vllm to download Holo1 from HuggingFace.                                                  |
+| [Local vLLM setup](src/surfer_h_cli/holo1/README.md)             | Install vLLM / Machine with GPU           | Uses the vLLM to download Holo1 from HuggingFace.                                                  |
 | [Local Docker Container](https://github.com/hcompai/hai-cookbook/tree/main/holo1/vllm)             | Install Docker / Machine with GPU              | Uses the `vllm/vllm-openai:v0.9.1` image.                                                  |
-| [Amazon SageMaker](https://github.com/hcompai/hai-cookbook/blob/main/holo1/sagemaker/deploy.ipynb) | Subscribe to Holo-1 Models on AWS Marketplace | Deploys the Holo-1 model via a prebuilt Notebook. No manual or complicated setup required. |
+| [Amazon SageMaker](https://github.com/hcompai/hai-cookbook/blob/main/holo1/sagemaker/deploy.ipynb) | Subscribe to Holo1 Models on AWS Marketplace | Deploys the Holo1 model via a prebuilt Notebook. No manual or complicated setup required. |
 
 
 For more information, check out the [H.AI Cookbook](https://github.com/hcompai/hai-cookbook).
@@ -57,7 +57,7 @@ HAI_MODEL_URL=https://your-api-endpoint-url/
 HAI_MODEL_NAME=hosted model name, for example Hcompany/Holo1-7B
 OPENAI_API_KEY=your_openai_api_key_here
 ```
-Note: Make sure your .env file ends with a blank (empty) line. This helps ensure the OPENAI_API_KEY and other variables are correctly loaded by the bash scripts.
+Note: Make sure your .env file ends with a blank (empty) line. This helps ensure the `OPENAI_API_KEY` and other variables are correctly loaded by the bash scripts.
 
 **Option 2: Export in your shell profile** (for global setup):
 Add these to your `.zshrc` or `.bashrc` files:
@@ -72,7 +72,7 @@ When running `vllm`, you can leave the `HAI_API_KEY` empty (or set it to any val
 
 ## Run the agent
 
-If you're serving your own model using vllm, start the server with:
+If you're serving your own model using vLLM, start the server with:
 
 ```bash
 export HAI_API_KEY=EMPTY
@@ -88,9 +88,9 @@ You can then run the agent from the Surfer-H-CLI using the following command:
 ```
 Here are the different run settings that may apply based on use and context:
 
-- ```run-on-holo1.sh``` : Use Holo-1 for navigation and localization, hosted remotely.
-- ```run-on-holo1-local.sh``` : Script with specific instruction for using one or several locally hosted Holo-1.
-- ```run-on-holo1-val-gpt41.sh``` : Use remotely-hosted Holo-1 and GPT-4.1 for validation.
+- ```run-on-holo1.sh``` : Use Holo1 for navigation and localization, hosted remotely.
+- ```run-on-holo1-local.sh``` : Script with specific instruction for using one or several locally hosted Holo1.
+- ```run-on-holo1-val-gpt41.sh``` : Use remotely-hosted Holo1 and GPT-4.1 for validation.
 
 The above scripts call the agent like this, with different configurations for the placeholders:
 
