@@ -85,7 +85,11 @@ def execute_navigation_action(navigation_action: dict, browser: SimpleWebBrowser
     action = navigation_action["action"]
 
     if action == "click_element":
+        previous_tabs = browser.get_tabs()
         browser.click_at(navigation_action["x"], navigation_action["y"])
+        new_tabs = browser.get_tabs()
+        if len(new_tabs) > len(previous_tabs):
+            browser.focus_tab(browser.find_newer_tab(previous_tabs, new_tabs).index)
     elif action == "write_element":
         browser.click_at(navigation_action["x"], navigation_action["y"])
         time.sleep(0.5)
