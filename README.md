@@ -111,6 +111,16 @@ uv run src/surfer_h_cli/surferh.py \
     --temperature_navigation 0.7 \
 
 ```
+### Using GPT for Validation
+To run ```run-on-holo1-val-gpt41.sh```, remember to export your OpenAI API key for validation:
+```
+export API_KEY_VALIDATION=${OPENAI_API_KEY}
+```
+and define the correct base URL
+```
+--base_url_validation https://api.openai.com/v1/
+```
+
 ## View a sample run
 The video below shows Surfer-H in action, demonstrating how the agent completes a real-world task by thinking, reasoning, and browsing the web based on a prompt. This demo (hosted on **YouTube**) illustrates what to expect when running an agent using the Surfer-H-CLI with the command `./run-on-holo1.sh.`
 
